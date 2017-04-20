@@ -1,0 +1,23 @@
+actions:
+  1:
+    description: "Reindex from remote es cluster"
+    action: reindex
+    options:
+      wait_interval: 9
+      max_wait: -1
+      request_body:
+        source:
+          remote:
+            host: http://other_cluster:9200
+            index: REINDEX_SELECTION
+          dest:
+            index: admin_log_
+          script:
+            lang: painless
+            inline: ctx._index = 'admin_log_' + (ctx._index.substring('admin_log_'.length(), ctx._index.length())) 
+      remote_filters:
+      - filtertype: pattern
+        kind: prefix
+        value: admin_log_.
+    filters:
+    - filtertype: none
