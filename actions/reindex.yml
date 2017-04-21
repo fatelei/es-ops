@@ -9,12 +9,12 @@ actions:
         source:
           remote:
             host: http://other_cluster:9200
-            index: REINDEX_SELECTION
-          dest:
-            index: admin_log_
-          script:
-            lang: painless
-            inline: ctx._index = 'admin_log_' + (ctx._index.substring('admin_log_'.length(), ctx._index.length())) 
+          index: REINDEX_SELECTION
+        dest:
+          index: admin_log_
+        script:
+          lang: painless
+          inline: ctx._index = 'admin_log_' + (ctx._index.substring('admin_log_'.length(), ctx._index.length())) 
       remote_filters:
       - filtertype: pattern
         kind: prefix
