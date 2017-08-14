@@ -1,7 +1,7 @@
 actions:
   1:
     description: "Daily snapshot indics"
-    action: snaphot
+    action: snapshot
     options:
       repository: admin_log_hdfs
       name: admin_log_%Y-%m-%d
