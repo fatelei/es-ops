@@ -1,0 +1,15 @@
+actions:
+  1:
+    description: "Daily snapshot indics"
+    action: snaphot
+    options:
+      repository: admin_log_hdfs
+      name: admin_log_%Y-%m-%d
+      wait_for_completion: True
+      ignore_unavailable: True
+    filters:
+    - filtertype: age
+      source: creation_date
+      direction: old
+      unit: days
+      unit_count: 1

@@ -1,0 +1,12 @@
+actions:
+  1:
+    description: "Daily snapshot indics"
+    action: snaphot
+    options:
+      repository: admin_log_hdfs
+      name: admin_log_%Y-%m-%d
+      wait_for_completion: True
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: {prefix}
